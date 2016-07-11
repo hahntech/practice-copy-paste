@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" strict="true">
+    <Appenders>
+        <Appender type="File" name="ASPSlog" fileName="logs/APS_Startup.log">
+            <PatternLayout>
+<!--                <Pattern>%d %p %c{1.} %C [%t] %m%n</Pattern>-->
+                    <Pattern>%d %p %c [%t] %m%n</Pattern>
+            </PatternLayout>
+        </Appender> 
+        <Appender type="Async" name="Async">
+            <AppenderRef ref="ASPSlog"/>
+        </Appender>  
+        <Appender type="Console" name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %C{l} [%l] [%t] %-5level %logger{36} - %msg%n"/>
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Logger name="TraceASPS" level="trace">
+            <AppenderRef ref="Async"/>
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="Async" level="info"/>
+        </Root>
+    </Loggers>
+</Configuration>
